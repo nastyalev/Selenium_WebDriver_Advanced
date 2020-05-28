@@ -37,5 +37,11 @@ namespace Lab
             return new Login(driver);
         }
 
+        public FortuneCookie GetFortuneCookie()
+        {
+            new Actions(driver).Click(driver.FindElement(By.XPath(" //*[text()=\"Fortune cookie\"]/../..//../*[text()=\"Edit\"]"))).Build().Perform();
+            return new FortuneCookie(driver);
+        }
+
     }
 }

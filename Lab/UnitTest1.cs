@@ -16,6 +16,7 @@ namespace Lab
         private HomePage homepage;
         private MainPage mainpage;
         private ProductEditing productediting;
+        private FortuneCookie fortunecookie;
         private string baseUrl;
 
         [SetUp]
@@ -43,7 +44,7 @@ namespace Lab
         public void HomePage_MainPage()
         {
             homepage = new HomePage(driver);
-            mainpage = homepage.AP();
+            mainpage = homepage.AllProducts();
 
             Assert.True(driver.FindElement(By.XPath("//*[text()=\"All Products\"]")).Displayed);
         }
@@ -64,8 +65,7 @@ namespace Lab
         public void Test3_OpenAndCheck()
         {
             mainpage = new MainPage(driver);
-
-            driver.FindElement(By.XPath("//a[@href][text()=\"Fortune cookie\"]")).Click();
+            fortunecookie = mainpage.GetFortuneCookie();
 
             Assert.True(driver.FindElement(By.XPath("//input[@id=\"ProductName\"][@value=\"Fortune cookie\"]")).Displayed);
             Assert.True(driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]/*[@selected][text()=\"Confections\"]")).Displayed);

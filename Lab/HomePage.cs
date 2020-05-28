@@ -15,13 +15,13 @@ namespace Lab
             this.driver = driver;
         }
 
-        private IWebElement AllProducts => driver.FindElement(By.XPath("//*[@href=\"/Product\"]"));
+        private IWebElement allproducts => driver.FindElement(By.XPath("//*[@href=\"/Product\"]"));
 
-        private IWebElement AllCategories => driver.FindElement(By.XPath("//*[@href=\"/Category\"]"));
+        private IWebElement allcategories => driver.FindElement(By.XPath("//*[@href=\"/Category\"]"));
 
-        public MainPage AP()
+        public MainPage AllProducts()
         {
-            new Actions(driver).Click().Click(AllProducts).Build().Perform();
+            new Actions(driver).Click().Click(allproducts).Build().Perform();
             return new MainPage(driver);
         }
 

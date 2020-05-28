@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Internal;
 using System;
@@ -43,5 +44,18 @@ namespace Lab
             return new FortuneCookie(driver);
         }
 
+        public void GetMainPage()
+        {
+            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"All Products\"]"));
+            String Main_page = str.Text;
+            Assert.True(Main_page.Equals("All Products"));
+        }
+
+        public void AssertAddProduct()
+        {
+            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"Fortune cookie\"]"));
+            String product = str.Text;
+            Assert.True(product.Equals("Fortune cookie"));
+        }
     }
 }

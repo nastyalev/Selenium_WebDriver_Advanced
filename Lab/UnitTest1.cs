@@ -19,6 +19,17 @@ namespace Lab
         private FortuneCookie fortunecookie;
         private string baseUrl;
 
+        private const string ProductName_ = "Fortune cookie";
+        private const string Category_ = "Confections";
+        private const string Supplier_ = "Specialty Biscuits, Ltd.";
+        private const string UnitPrice_ = "3,0000";
+        private const string QuantityPerUnit_ = "10 boxes x 15 pieces";
+        private const string UnitsInStock_ = "1";
+        private const string UnitsOnOrder_ = "3";
+        private const string ReorderLevel_ = "0";
+
+
+
         [SetUp]
         public void Setup()
         {
@@ -37,7 +48,7 @@ namespace Lab
             login = new Login(driver);
             homepage = login.Login_();
 
-            Assert.True(driver.FindElement(By.XPath("//*[text()=\"Home page\"]")).Displayed);
+            homepage.GetHomePage();
         }
 
         [SetUp]
@@ -46,8 +57,9 @@ namespace Lab
             homepage = new HomePage(driver);
             mainpage = homepage.AllProducts();
 
-            Assert.True(driver.FindElement(By.XPath("//*[text()=\"All Products\"]")).Displayed);
+            mainpage.GetMainPage();
         }
+
 
         [Test]
         public void Test2_AddProduct()
@@ -57,7 +69,7 @@ namespace Lab
             productediting = mainpage.CreateNew();
             mainpage = productediting.CreateProduct();
 
-            Assert.True(driver.FindElement(By.XPath("//*[text()=\"Fortune cookie\"]")).Displayed);
+            mainpage.AssertAddProduct();
         }
 
 
@@ -67,14 +79,14 @@ namespace Lab
             mainpage = new MainPage(driver);
             fortunecookie = mainpage.GetFortuneCookie();
 
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"ProductName\"][@value=\"Fortune cookie\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]/*[@selected][text()=\"Confections\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]/*[@selected][text()=\"Specialty Biscuits, Ltd.\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"UnitPrice\"][@value=\"3,0000\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"QuantityPerUnit\"][@value=\"10 boxes x 15 pieces\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"UnitsInStock\"][@value=\"1\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"UnitsOnOrder\"][@value=\"3\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//input[@id=\"ReorderLevel\"][@value=\"0\"]")).Displayed);
+            fortunecookie.GetProductName();
+            fortunecookie.GetCategory();
+            fortunecookie.GetSupplier();
+            fortunecookie.GetUnitPrice();
+            fortunecookie.GetQuantityPerUnit();
+            fortunecookie.GetUnitsInStock();
+            fortunecookie.GetUnitsOnOrder();
+            fortunecookie.GetReorderLevel();
         }
 
         [Test]
@@ -90,8 +102,7 @@ namespace Lab
             mainpage = new MainPage(driver);
             login = mainpage.Logout();
 
-            Assert.True(driver.FindElement(By.XPath("//*[text()=\"Name\"]")).Displayed);
-            Assert.True(driver.FindElement(By.XPath("//*[text()=\"Password\"]")).Displayed);
+            login.AssertLogout();
         }
 
 

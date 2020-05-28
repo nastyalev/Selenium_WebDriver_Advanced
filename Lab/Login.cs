@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,14 @@ namespace Lab
             new Actions(driver).Click().Click(ButtonSend).Build().Perform();
 
             return new HomePage(driver);
+        }
+
+        public void AssertLogout()
+        {
+            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"Login\"]"));
+            String login = str.Text;
+           
+            Assert.True(login.Equals("Login"));
         }
     }
 }

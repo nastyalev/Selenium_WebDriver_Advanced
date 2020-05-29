@@ -21,19 +21,7 @@ namespace Lab
 
         private const string HomePage_ = "Home page";
         private const string ProductId_ = "ProductId";
-        
-
         private const string ProductName_ = "Fortune cookie";
-        //private const string Category_ = "Confections";
-        //private const string Supplier_ = "Specialty Biscuits, Ltd.";
-        //private const string UnitPrice_ = "3,0000";
-        //private const string QuantityPerUnit_ = "10 boxes x 15 pieces";
-        //private const string UnitsInStock_ = "1";
-        //private const string UnitsOnOrder_ = "3";
-        //private const string ReorderLevel_ = "0";
-
-
-
 
         [SetUp]
         public void Setup()

@@ -19,13 +19,16 @@ namespace Lab
             this.driver = driver;
         }
 
+        private IWebElement Main_page => driver.FindElement(By.XPath("//*[text()=\"ProductId\"]"));
+        private IWebElement product => driver.FindElement(By.XPath("//*[text()=\"Fortune cookie\"]"));
+
         public ProductEditing CreateNew()
         {
             new Actions(driver).Click(driver.FindElement(By.XPath("//*[@href=\"/Product/Create\"]"))).Build().Perform();
             return new ProductEditing(driver);
         }
 
-        public MainPage DeletePC()
+        public MainPage DeleteFortuneCookie()
         {
             new Actions(driver).Click(driver.FindElement(By.XPath("//*[text()=\"Fortune cookie\"]//..//..//a[text()=\"Remove\"]"))).Build().Perform();
             driver.SwitchTo().Alert().Accept();
@@ -44,18 +47,14 @@ namespace Lab
             return new FortuneCookie(driver);
         }
 
-        public void GetMainPage()
+        public string GetMainPage()
         {
-            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"All Products\"]"));
-            String Main_page = str.Text;
-            Assert.True(Main_page.Equals("All Products"));
+            return Main_page.Text;
         }
 
-        public void AssertAddProduct()
+        public string AssertAddProduct()
         {
-            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"Fortune cookie\"]"));
-            String product = str.Text;
-            Assert.True(product.Equals("Fortune cookie"));
+            return product.Text;
         }
     }
 }

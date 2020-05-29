@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Lab
 {
@@ -17,20 +18,18 @@ namespace Lab
         }
 
         private IWebElement allproducts => driver.FindElement(By.XPath("//*[@href=\"/Product\"]"));
-
         private IWebElement allcategories => driver.FindElement(By.XPath("//*[@href=\"/Category\"]"));
-  
+        private IWebElement Home_page => driver.FindElement(By.XPath("//*[text()=\"Home page\"]"));
+
         public MainPage AllProducts()
         {
             new Actions(driver).Click().Click(allproducts).Build().Perform();
             return new MainPage(driver);
         }
 
-        public void GetHomePage()
+        public string GetHomePage()
         {
-            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"Home page\"]"));
-            String Home_page = str.Text;
-            Assert.True(Home_page.Equals("Home page"));
+            return Home_page.Text;
         }
     }
 }

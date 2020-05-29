@@ -19,6 +19,7 @@ namespace Lab
         private IWebElement InputName => driver.FindElement(By.Id("Name"));
         private IWebElement InputPassword => driver.FindElement(By.Id("Password"));
         private IWebElement ButtonSend => driver.FindElement(By.XPath("//*[@type=\"submit\"]"));
+        private IWebElement login => driver.FindElement(By.XPath("//*[text()=\"Login\"]"));
 
         public HomePage Login_()
         {
@@ -29,12 +30,9 @@ namespace Lab
             return new HomePage(driver);
         }
 
-        public void AssertLogout()
+        public bool AssertLogout()
         {
-            IWebElement str = driver.FindElement(By.XPath("//*[text()=\"Login\"]"));
-            String login = str.Text;
-           
-            Assert.True(login.Equals("Login"));
+            return login.Displayed;
         }
     }
 }

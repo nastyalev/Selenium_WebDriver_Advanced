@@ -18,7 +18,6 @@ namespace Lab
         }
 
         private IWebElement ProductName => driver.FindElement(By.Id("ProductName"));
-
         private IWebElement UnitPrice => driver.FindElement(By.Id("UnitPrice"));
         private IWebElement QuantityPerUnit => driver.FindElement(By.Id("QuantityPerUnit"));
         private IWebElement UnitsInStock => driver.FindElement(By.Id("UnitsInStock"));

@@ -14,59 +14,52 @@ namespace Lab
             this.driver = driver;
         }
 
-        public string GetProductName()
+        private IWebElement ProductName => driver.FindElement(By.XPath("//input[@id=\"ProductName\"][@value=\"Fortune cookie\"]"));
+        private IWebElement Category => driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]/*[@selected][text()=\"Confections\"]"));
+        private IWebElement Supplier => driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]/*[@selected][text()=\"Specialty Biscuits, Ltd.\"]"));
+        private IWebElement UnitPrice => driver.FindElement(By.XPath("//input[@id=\"UnitPrice\"][@value=\"3,0000\"]"));
+        private IWebElement QuantityPerUnit => driver.FindElement(By.XPath("//input[@id=\"QuantityPerUnit\"][@value=\"10 boxes x 15 pieces\"]"));
+        private IWebElement UnitsInStock => driver.FindElement(By.XPath("//input[@id=\"UnitsInStock\"][@value=\"1\"]"));
+        private IWebElement UnitsOnOrder => driver.FindElement(By.XPath("//input[@id=\"UnitsOnOrder\"][@value=\"3\"]"));
+        private IWebElement ReorderLevel => driver.FindElement(By.XPath("//input[@id=\"ReorderLevel\"][@value=\"0\"]"));
+
+        public bool GetProductName()
         {
-            IWebElement ProductName = driver.FindElement(By.XPath("//input[@id=\"ProductName\"][@value=\"Fortune cookie\"]"));
-            Assert.True(ProductName.Displayed);
-            return ProductName.Text;
+            return ProductName.Displayed;
         }
 
-        public string GetCategory()
+        public bool GetCategory()
         {
-            IWebElement Category = driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]/*[@selected][text()=\"Confections\"]"));
-            Assert.True(Category.Displayed);
-            return Category.Text;
+            return Category.Displayed;
         }
-        public string GetSupplier()
+        public bool GetSupplier()
         {
-            IWebElement Supplier = driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]/*[@selected][text()=\"Specialty Biscuits, Ltd.\"]"));
-            Assert.True(Supplier.Displayed);
-            return Supplier.Text;
+            return Supplier.Displayed;
         }
 
-        public string GetUnitPrice()
+        public bool GetUnitPrice()
         {
-            IWebElement UnitPrice = driver.FindElement(By.XPath("//input[@id=\"UnitPrice\"][@value=\"3,0000\"]"));
-            Assert.True(UnitPrice.Displayed);
-            return UnitPrice.Text;
+            return UnitPrice.Displayed;
         }
 
-        public string GetQuantityPerUnit()
+        public bool GetQuantityPerUnit()
         {
-            IWebElement QuantityPerUnit = driver.FindElement(By.XPath("//input[@id=\"QuantityPerUnit\"][@value=\"10 boxes x 15 pieces\"]"));
-            Assert.True(QuantityPerUnit.Displayed);
-            return QuantityPerUnit.Text;
+            return QuantityPerUnit.Displayed;
         }
 
-        public string GetUnitsInStock()
+        public bool GetUnitsInStock()
         {
-            IWebElement UnitsInStock = driver.FindElement(By.XPath("//input[@id=\"UnitsInStock\"][@value=\"1\"]"));
-            Assert.True(UnitsInStock.Displayed);
-            return UnitsInStock.Text;
+            return UnitsInStock.Displayed;
         }
 
-        public string GetUnitsOnOrder()
+        public bool GetUnitsOnOrder()
         {
-            IWebElement UnitsOnOrder = driver.FindElement(By.XPath("//input[@id=\"UnitsOnOrder\"][@value=\"3\"]"));
-            Assert.True(UnitsOnOrder.Displayed);
-            return UnitsOnOrder.Text;
+            return UnitsOnOrder.Displayed;
         }
 
-        public string GetReorderLevel()
+        public bool GetReorderLevel()
         {
-            IWebElement ReorderLevel = driver.FindElement(By.XPath("//input[@id=\"ReorderLevel\"][@value=\"0\"]"));
-            Assert.True(ReorderLevel.Displayed);
-            return ReorderLevel.Text;
+            return ReorderLevel.Displayed;
         }
     }
 }

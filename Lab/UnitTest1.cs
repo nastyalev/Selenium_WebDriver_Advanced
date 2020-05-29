@@ -19,14 +19,19 @@ namespace Lab
         private FortuneCookie fortunecookie;
         private string baseUrl;
 
+        private const string HomePage_ = "Home page";
+        private const string ProductId_ = "ProductId";
+        
+
         private const string ProductName_ = "Fortune cookie";
-        private const string Category_ = "Confections";
-        private const string Supplier_ = "Specialty Biscuits, Ltd.";
-        private const string UnitPrice_ = "3,0000";
-        private const string QuantityPerUnit_ = "10 boxes x 15 pieces";
-        private const string UnitsInStock_ = "1";
-        private const string UnitsOnOrder_ = "3";
-        private const string ReorderLevel_ = "0";
+        //private const string Category_ = "Confections";
+        //private const string Supplier_ = "Specialty Biscuits, Ltd.";
+        //private const string UnitPrice_ = "3,0000";
+        //private const string QuantityPerUnit_ = "10 boxes x 15 pieces";
+        //private const string UnitsInStock_ = "1";
+        //private const string UnitsOnOrder_ = "3";
+        //private const string ReorderLevel_ = "0";
+
 
 
 
@@ -48,7 +53,7 @@ namespace Lab
             login = new Login(driver);
             homepage = login.Login_();
 
-            homepage.GetHomePage();
+            Assert.AreEqual(HomePage_, homepage.GetHomePage());
         }
 
         [SetUp]
@@ -57,7 +62,7 @@ namespace Lab
             homepage = new HomePage(driver);
             mainpage = homepage.AllProducts();
 
-            mainpage.GetMainPage();
+            Assert.AreEqual(ProductId_, mainpage.GetMainPage());
         }
 
 
@@ -69,7 +74,7 @@ namespace Lab
             productediting = mainpage.CreateNew();
             mainpage = productediting.CreateProduct();
 
-            mainpage.AssertAddProduct();
+            Assert.AreEqual(ProductName_, mainpage.AssertAddProduct());
         }
 
 
@@ -79,21 +84,21 @@ namespace Lab
             mainpage = new MainPage(driver);
             fortunecookie = mainpage.GetFortuneCookie();
 
-            fortunecookie.GetProductName();
-            fortunecookie.GetCategory();
-            fortunecookie.GetSupplier();
-            fortunecookie.GetUnitPrice();
-            fortunecookie.GetQuantityPerUnit();
-            fortunecookie.GetUnitsInStock();
-            fortunecookie.GetUnitsOnOrder();
-            fortunecookie.GetReorderLevel();
+            Assert.True(fortunecookie.GetProductName());
+            Assert.True(fortunecookie.GetCategory());
+            Assert.True(fortunecookie.GetSupplier());
+            Assert.True(fortunecookie.GetUnitPrice());
+            Assert.True(fortunecookie.GetQuantityPerUnit());
+            Assert.True(fortunecookie.GetUnitsInStock());
+            Assert.True(fortunecookie.GetUnitsOnOrder());
+            Assert.True(fortunecookie.GetReorderLevel());
         }
 
         [Test]
         public void Test4_DeleteProduct()
         {
             mainpage = new MainPage(driver);
-            mainpage = mainpage.DeletePC();
+            mainpage = mainpage.DeleteFortuneCookie();
         }
 
         [Test]
@@ -102,7 +107,7 @@ namespace Lab
             mainpage = new MainPage(driver);
             login = mainpage.Logout();
 
-            login.AssertLogout();
+            Assert.True(login.AssertLogout());
         }
 
 

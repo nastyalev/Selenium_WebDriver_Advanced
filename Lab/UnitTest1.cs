@@ -16,12 +16,24 @@ namespace Lab
         private HomePage homepage;
         private MainPage mainpage;
         private ProductEditing productediting;
-        private FortuneCookie fortunecookie;
+        //private FortuneCookie fortunecookie;
         private string baseUrl;
 
         private const string HomePage_ = "Home page";
         private const string ProductId_ = "ProductId";
+        
+
         private const string ProductName_ = "Fortune cookie";
+        //private const string Category_ = "Confections";
+        //private const string Supplier_ = "Specialty Biscuits, Ltd.";
+        //private const string UnitPrice_ = "3,0000";
+        //private const string QuantityPerUnit_ = "10 boxes x 15 pieces";
+        //private const string UnitsInStock_ = "1";
+        //private const string UnitsOnOrder_ = "3";
+        //private const string ReorderLevel_ = "0";
+
+
+
 
         [SetUp]
         public void Setup()
@@ -70,16 +82,16 @@ namespace Lab
         public void Test3_OpenAndCheck()
         {
             mainpage = new MainPage(driver);
-            fortunecookie = mainpage.GetFortuneCookie();
+            productediting = mainpage.GetFortuneCookie();
 
-            Assert.True(fortunecookie.GetProductName());
-            Assert.True(fortunecookie.GetCategory());
-            Assert.True(fortunecookie.GetSupplier());
-            Assert.True(fortunecookie.GetUnitPrice());
-            Assert.True(fortunecookie.GetQuantityPerUnit());
-            Assert.True(fortunecookie.GetUnitsInStock());
-            Assert.True(fortunecookie.GetUnitsOnOrder());
-            Assert.True(fortunecookie.GetReorderLevel());
+            Assert.True(productediting.GetProductName());
+            Assert.True(productediting.GetCategory());
+            Assert.True(productediting.GetSupplier());
+            Assert.True(productediting.GetUnitPrice());
+            Assert.True(productediting.GetQuantityPerUnit());
+            Assert.True(productediting.GetUnitsInStock());
+            Assert.True(productediting.GetUnitsOnOrder());
+            Assert.True(productediting.GetReorderLevel());
         }
 
         [Test]

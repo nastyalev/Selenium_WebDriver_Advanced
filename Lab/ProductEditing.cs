@@ -41,5 +41,52 @@ namespace Lab
             new Actions(driver).Click(ButtonSend).Build().Perform();
             return new MainPage(driver);
         }
+
+        public bool GetProductName()
+        {
+            IWebElement NewProductName = driver.FindElement(By.XPath("//input[@id=\"ProductName\"][@value=\"Fortune cookie\"]"));
+            return NewProductName.Displayed;
+        }
+
+        public bool GetCategory()
+        {
+            IWebElement NewCategory = driver.FindElement(By.XPath("//*[@id=\"CategoryId\"]/*[@selected][text()=\"Confections\"]"));
+            return NewCategory.Displayed;
+        }
+        public bool GetSupplier()
+        {
+            IWebElement NewSupplier = driver.FindElement(By.XPath("//*[@id=\"SupplierId\"]/*[@selected][text()=\"Specialty Biscuits, Ltd.\"]"));
+            return NewSupplier.Displayed;
+        }
+
+        public bool GetUnitPrice()
+        {
+            IWebElement NewUnitPrice = driver.FindElement(By.XPath("//input[@id=\"UnitPrice\"][@value=\"3,0000\"]"));
+            return NewUnitPrice.Displayed;
+        }
+
+        public bool GetQuantityPerUnit()
+        {
+            IWebElement NewQuantityPerUnit = driver.FindElement(By.XPath("//input[@id=\"QuantityPerUnit\"][@value=\"10 boxes x 15 pieces\"]"));
+            return NewQuantityPerUnit.Displayed;
+        }
+
+        public bool GetUnitsInStock()
+        {
+            IWebElement NewUnitsInStock = driver.FindElement(By.XPath("//input[@id=\"UnitsInStock\"][@value=\"1\"]"));
+            return NewUnitsInStock.Displayed;
+        }
+
+        public bool GetUnitsOnOrder()
+        {
+            IWebElement NewUnitsOnOrder = driver.FindElement(By.XPath("//input[@id=\"UnitsOnOrder\"][@value=\"3\"]"));
+            return NewUnitsOnOrder.Displayed;
+        }
+
+        public bool GetReorderLevel()
+        {
+            IWebElement NewReorderLevel = driver.FindElement(By.XPath("//input[@id=\"ReorderLevel\"][@value=\"0\"]"));
+            return NewReorderLevel.Displayed;
+        }
     }
 }
